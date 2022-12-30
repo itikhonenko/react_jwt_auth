@@ -8,12 +8,19 @@ import Welcome from './components/Welcome';
 import Signin from './components/Signin';
 import Heart from './components/Heart';
 import reducers from './reducers';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import reduxThunk from 'redux-thunk';
+
+const store = createStore(
+  reducers,
+  {}, // initial state
+  applyMiddleware(reduxThunk)
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={createStore(reducers, {})}>
+    <Provider store={store}>
       <BrowserRouter>
         <App>
           <Routes>
