@@ -1,4 +1,4 @@
-import requireAuth from "./requireAuth"
+import withAuth from "./withAuth"
 
 const Heart = () => {
   return (
@@ -8,4 +8,4 @@ const Heart = () => {
   )
 }
 
-export default requireAuth(Heart)
+export default withAuth(Heart)

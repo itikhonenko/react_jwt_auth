@@ -8,7 +8,7 @@ const withAuth = (Component) => ({ ...props }) => {
 
   useEffect(() => {
     if (!authenticated) navigate('/')
-  }, [authenticated])
+  }, [authenticated, navigate])
 
   return authenticated && <Component {...props} />;
 };
