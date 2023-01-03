@@ -1,15 +1,16 @@
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { compose } from 'redux'
 import { Field, reduxForm } from 'redux-form'
 
-import * as actions from '../actions'
+import { signin } from '../actions'
 
-const Signin = ({ handleSubmit, pristine, submitting, signin, errorMessage }) => {
-  const history = useNavigate();
+const Signin = ({ handleSubmit, pristine, submitting, signin }) => {
+  const navigate = useNavigate()
+  const errorMessage = useSelector(({ auth: { errorMessage } }) => errorMessage)
 
   const onSubmit = (formProps) => {
-    signin(formProps, () => { history('/heart') })
+    signin(formProps, () => { navigate('/heart') })
   }
 
   return (
@@ -40,13 +41,7 @@ const Signin = ({ handleSubmit, pristine, submitting, signin, errorMessage }) =>
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    errorMessage: state.auth.errorMessage
-  }
-}
-
 export default compose(
-  connect(mapStateToProps, actions),
+  connect(null, { signin }),
   reduxForm({ form: 'signin' })
 )(Signin)

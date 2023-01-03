@@ -14,6 +14,15 @@ const signin = (formProps, callback) => async dispatch => {
   }
 }
 
+const signout = () => {
+  localStorage.removeItem('token')
+  return {
+    type: AUTH_USER,
+    payload: ''
+  }
+}
+
 export {
-  signin
+  signin,
+  signout
 }
