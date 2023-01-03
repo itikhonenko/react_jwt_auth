@@ -1,3 +1,5 @@
+import requireAuth from "./requireAuth"
+
 const Heart = () => {
   return (
     <div>
@@ -6,4 +8,4 @@ const Heart = () => {
   )
 }
 
-export default Heart
+export default requireAuth(Heart)

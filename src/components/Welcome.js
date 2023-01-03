@@ -1,7 +1,7 @@
 const Welcome = () => {
   return (
     <div>
-      Welcome page!
+      Welcome page, you need to sign in first!
     </div>
   )
 }
