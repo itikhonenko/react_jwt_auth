@@ -1,12 +1,15 @@
 import { connect } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { compose } from 'redux'
 import { Field, reduxForm } from 'redux-form'
 
 import * as actions from '../actions'
 
 const Signin = ({ handleSubmit, pristine, submitting, signin, errorMessage }) => {
+  const history = useNavigate();
+
   const onSubmit = (formProps) => {
-    signin(formProps)
+    signin(formProps, () => { history('/heart') })
   }
 
   return (

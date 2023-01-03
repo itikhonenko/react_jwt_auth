@@ -13,7 +13,11 @@ import reduxThunk from 'redux-thunk';
 
 const store = createStore(
   reducers,
-  {}, // initial state
+  {
+    auth: {
+      authenticated: localStorage.getItem('token')
+    }
+  },
   applyMiddleware(reduxThunk)
 )
 
